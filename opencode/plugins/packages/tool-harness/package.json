@@ -1,5 +1,5 @@
 {
-  "name": "@vaynerakawalo/opencode-plugin-tool-harness",
+  "name": "@vaynerakawalo/opencode-tool-harness",
   "version": "0.1.0",
   "main": "src/tool-harness.ts",
   "type": "module",
