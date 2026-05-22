@@ -1,0 +1,52 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*-v*'
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package directory under opencode/plugins/packages/'
+        required: true
+        type: choice
+        options:
+          - tool-harness
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        working-directory: opencode/plugins
+        run: bun install
+
+      - name: Typecheck & test
+        working-directory: opencode/plugins
+        run: |
+          bun run typecheck
+          bun run test
+
+      - name: Resolve package directory
+        id: resolve
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            DIR="${{ github.event.inputs.package }}"
+          else
+            TAG=${GITHUB_REF#refs/tags/}
+            DIR=${TAG%-v*}
+          fi
+          echo "dir=$DIR" >> $GITHUB_OUTPUT
+          echo "Publishing package: $DIR"
+
+      - name: Configure npm auth
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Publish
+        working-directory: opencode/plugins/packages/${{ steps.resolve.outputs.dir }}
+        run: npm publish

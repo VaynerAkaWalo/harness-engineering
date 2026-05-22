@@ -1,0 +1,14 @@
+{
+  "name": "opencode-plugins",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/bun": "latest"
+  }
+}

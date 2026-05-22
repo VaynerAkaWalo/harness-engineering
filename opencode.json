@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [],
+  "permission": {
+    "bash": {
+      "npm run typecheck*": "allow",
+      "bun test*": "allow"
+    }
+  }
+}
