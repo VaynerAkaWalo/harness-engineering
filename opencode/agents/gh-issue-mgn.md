@@ -2,6 +2,7 @@
 description: Searches for and creates GitHub issues
 mode: subagent
 tools:
+  read: true
   github_issue_write: true
   github_issue_read: true
   github_list_issues: true
