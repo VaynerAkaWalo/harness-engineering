@@ -5,5 +5,8 @@
       "npm run typecheck*": "allow",
       "bun test*": "allow"
     }
+  },
+  "skills": {
+    "paths": ["opencode/skills"]
   }
 }
