@@ -37,5 +37,5 @@ During exploration, identify the primary goal of the pull request. Distinguish b
 5. Run lint and tests to verify changes
 6. Commit changes with short descriptive message — Do not commit until you are certain no secrets are exposed.
 7. Push changes
-8. Invoke the `gh-pr-mgn` subagent via the Task tool to create the pull request. Pass the PR title, body (with Summary and Testing sections), owner, repo, head branch, and base branch.
+8. Invoke the `gh-pr-mgn` subagent via the Task tool to create the pull request. Pass the PR title, body (with Summary and Testing sections), owner, repo, head branch, and base branch. The subagent will handle linking to any related issue automatically.
 9. Print PR link to user
