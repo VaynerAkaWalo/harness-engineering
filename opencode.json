@@ -7,9 +7,6 @@
     }
   },
   "skills": {
-    "pull-request": {
-      "description": "Creates pull request with current changes",
-      "path": "opencode/skills/pull-request/SKILL.md"
-    }
+    "paths": ["opencode/skills"]
   }
 }
