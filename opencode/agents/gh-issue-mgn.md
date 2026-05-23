@@ -2,7 +2,7 @@
 description: Searches for and creates GitHub issues
 mode: subagent
 tools:
-  bash: true
+  read: true
   github_issue_write: true
   github_issue_read: true
   github_list_issues: true
@@ -18,7 +18,7 @@ Use `github_search_issues` or `github_list_issues` to check whether a similar is
 ## Creating issues
 Use `github_issue_write` with method `create`. Single issue per request. If the user provides labels, assignees, or a milestone, apply them during creation.
 
-If `owner/repo` is not provided, infer it from the local git context using `bash`.
+If `owner/repo` is not provided, infer it from `.git/config` using the `Read` tool — parse the `url` under `[remote "origin"]` and extract `owner/repo` from the path.
 
 ## Issue template
 Structure every issue body using this template — fill in the **Context** section with a compact description of the problem or value, and define concrete, measurable **Definition of Done** checklist items.
